@@ -4,14 +4,14 @@ setup.cfg
 pywebview.egg-info
 MANIFEST
 build
-
+dist
 .cache
 .idea
 .vs
 bin
 obj
 node_modules
-
+dist
 
 .DS_Store
 venv*

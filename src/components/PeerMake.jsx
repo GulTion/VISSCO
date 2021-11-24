@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import Peer from "peerjs";
 import "./_One.scss";
-import { customAlphabet } from "nanoid";
 import { connect } from "react-redux";
 import RemoteList from "./RemoteList";
-import Socket from "./Socket";
+// import Socket from "./Socket";
+import { customAlphabet } from "nanoid";
 const nanoid = customAlphabet("abcdef", 4);
 //=> "4f90d13a42"
 document.remote = {};
@@ -40,13 +40,21 @@ export default connect(
   };
 
   useEffect(() => {
-    let client = new Peer(nanoid());
+    let client = new Peer(nanoid(), {
+      host: "peerserver.gultion.repl.co",
+      port: 9000,
+      path: "/myapp",
+      key: "peerjs",
+    });
+    console.log(client);
     client.on("open", (id) => {
       document.me = client;
       console.log(id);
       setKey(id);
     });
-
+    client.on("error", (id) => {
+      console.log("errr", id);
+    });
     // when client make connection to someone, and he is waiting for connection
     client.on("connection", function (remote) {
       remote.on("open", () => {
@@ -76,7 +84,7 @@ export default connect(
         onChange={handleSetYouKey}
         onBlur={makeConnection}
       />
-      <Socket />
+      {/* <Socket /> */}
       {key && <RemoteList />}
     </div>
   );

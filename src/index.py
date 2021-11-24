@@ -27,6 +27,7 @@ class Api:
         if(data["type"]=="move"):
             mouse.move(data["data"]["x"], data["data"]["y"])
         
+        
 
             
 

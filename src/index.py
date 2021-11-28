@@ -1,16 +1,17 @@
 import os
-# from pynput import mouse
 import webview
 
-from time import time
+from pynput.mouse import Controller
 
-from pynput.mouse import Controller, Button
-mouse = Controller()
+mice = Controller()
 
 class Api:
-    def working(self, data):
+    def handleMouse(self, data):
         if(data["type"]=="move"):
-            pass
+            mice.position = (data["data"]["x"],data["data"]["y"] )
+
+
+
             # mouse.position = (data["data"]["x"], data["data"]["y"])
         
         

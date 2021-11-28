@@ -1,6 +1,5 @@
 import store from "../store/store";
 const handShaker = (myid, data, uid) => {
-  let sender = (_data) => document.socket.emit();
   const { signalApi } = document;
 
   if (data.from !== myid) {
@@ -23,9 +22,6 @@ const handShaker = (myid, data, uid) => {
 
       case "ANSWER":
         if (data.to === myid) {
-          // signalApi.haveToAnwser = data.from
-          // signalApi.offerType=data.offerType
-          console.log(data);
           document.p.signal(data.offer);
           store.dispatch({
             type: "EDIT_PEER",

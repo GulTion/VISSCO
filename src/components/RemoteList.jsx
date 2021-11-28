@@ -9,7 +9,6 @@ export default connect((state) => ({
   const vidRef = useRef();
 
   const handleCall = (id) => {
-    // document.remotes[id].send("hi");
     return async () => {
       // let stream = await navigator.mediaDevices.getDisplayMedia({
       //   video: true,
@@ -25,29 +24,7 @@ export default connect((state) => ({
       });
     };
   };
-  useEffect(() => {
-    // document.me.on("call", async function (call) {
-    //   // let stream = await navigator.mediaDevices.getDisplayMedia({
-    //   //   // video: true,
-    //   //   audio: true,
-    //   // });
-    //   call.answer(null); // Answer the call with an A/V stream.
-    //   call.on("stream", function (remoteStream) {
-    //     vidRef.current.srcObject = remoteStream;
-    //     vidRef.current.addEventListener("mousemove", (e) => {
-    //       const { videoWidth, videoHeight } = vidRef.current;
-    //       let { top, left, width, height } =
-    //         vidRef.current.getBoundingClientRect();
-    //       const { x, y } = e;
-    //       let arr = [
-    //         Math.round(((x - left) * videoWidth) / width),
-    //         Math.round(((y - top) * videoHeight) / height),
-    //       ];
-    //       document.client[call.peer].send(arr);
-    //     });
-    //   });
-    // });
-  }, []);
+
   return (
     <div className="RemoteList">
       {NormalSignal.have &&

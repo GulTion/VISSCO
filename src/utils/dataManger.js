@@ -5,9 +5,12 @@ const dataManager = (data, myid) => {
   // document.k = data;
   if (myid !== data.from) {
     switch (type) {
-      case "MOUSE_MOVE":
+      case "MOUSE":
         // console.log("move_my_mouse", info.x, info.y);
-        pywebview.api.working({ type: "move", data: { x: info.x, y: info.y } });
+        pywebview.api.handleMouse({
+          type: "move",
+          data: { x: info.x, y: info.y },
+        });
         break;
 
       default:

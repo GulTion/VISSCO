@@ -46,7 +46,7 @@ export default function SP() {
         dataManager(data, myid);
       });
 
-      p.send("whatever" + Math.random());
+      // p.send("whatever" + Math.random());
     });
 
     p.on("stream", function (remoteStream) {

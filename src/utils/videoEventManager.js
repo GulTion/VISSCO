@@ -21,7 +21,7 @@ const videoEventManager = (vid, toid) => {
     });
     // console.log(data);
     // console.log(e);
-    // document.p.send(data);
+    document.p.send(data);
   });
   vid.addEventListener("keydown", (e) => {
     let data = JSON.stringify({

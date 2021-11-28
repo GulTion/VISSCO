@@ -10,7 +10,6 @@ const signalManager = (signal) => {
   const { myid } = store.getState();
   if (window.location.hash === "#1") {
     if (signalApi.haveToAnwser) {
-      console.log("Here");
       document.socket.emit(signalApi.haveToAnwser, {
         type: "ANSWER",
         from: myid,

@@ -33,32 +33,19 @@ export default connect((state) => ({
     //   // });
     //   call.answer(null); // Answer the call with an A/V stream.
     //   call.on("stream", function (remoteStream) {
-    //     // Show stream in some video/canvas element.
-    //     // console.log(call)
     //     vidRef.current.srcObject = remoteStream;
-    //     // console.log(call);
-    //     // document.clients[pee]
     //     vidRef.current.addEventListener("mousemove", (e) => {
     //       const { videoWidth, videoHeight } = vidRef.current;
-    //       // console.log(window.screen);
     //       let { top, left, width, height } =
     //         vidRef.current.getBoundingClientRect();
     //       const { x, y } = e;
-    //       // document.client[call.peer].send(JSON.stringify({ ...e }));
     //       let arr = [
     //         Math.round(((x - left) * videoWidth) / width),
     //         Math.round(((y - top) * videoHeight) / height),
     //       ];
-    //       // document.socket.emit("mousemove", arr);
     //       document.client[call.peer].send(arr);
     //     });
-    //     // console.log([e.movementX, e.movementY]);
     //   });
-    //   //   vidRef.current.addEventListener("mousemove", (e) => {
-    //   //     // document.client[call.peer].send(JSON.stringify({ ...e }));
-    //   //     console.table(e);
-    //   //   });
-    //   // });
     // });
   }, []);
   return (
@@ -71,7 +58,7 @@ export default connect((state) => ({
               {" "}
               {id}{" "}
               <button onClick={handleCall(e)}>
-                {connected ? "Video" : "Call"}
+                {connected ? "STREAM" : "CONNECT"}
               </button>
             </div>
           );

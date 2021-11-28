@@ -8,6 +8,8 @@ import handShaker from "../utils/handShaker";
 import signalManager from "../utils/signalManager";
 const nanoid = customAlphabet("abcdef", 4);
 import "regenerator-runtime/runtime";
+import dataManager from "../utils/dataManger";
+import videoEventManager from "../utils/videoEventManager";
 
 export default function SP() {
   const [offer, setOffer] = useState({ offer: null, answer: null });
@@ -37,9 +39,11 @@ export default function SP() {
     p.on("connect", () => {
       console.log("CONNECT");
       // store.dispatch({type:"EDIT_PEER", data:{id:}})
+      const { myid } = store.getState();
 
       p.on("data", (data) => {
-        console.log("data: " + data);
+        // console.log("data: " + JSON.stringify(data));
+        dataManager(data, myid);
       });
 
       p.send("whatever" + Math.random());
@@ -47,13 +51,15 @@ export default function SP() {
 
     p.on("stream", function (remoteStream) {
       vidRef.current.srcObject = remoteStream;
-      console.log("stream");
-      // vidRef.current.addEventListener("touchmove", (e) => {
-      //   document.clients[id].send(e);
-      // });
+      // console.log("stream");
+      videoEventManager(vidRef.current, _id);
     });
   }, []);
   const vidRef = useRef();
+  useEffect(() => {
+    // vidRef.current.
+    videoEventManager(vidRef.current, _id);
+  }, [vidRef]);
 
   const handleCall = (id) => {
     // document.remotes[id].send("hi");

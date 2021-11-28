@@ -3,7 +3,8 @@ import { io } from "socket.io-client";
 export default function Socket({ id }) {
   const [conn, setConn] = useState(false);
   useEffect(() => {
-    const socket = io("https://chitraBackend.gultion.repl.co");
+    // const socket = io("https://chitraBackend.gultion.repl.co");
+    const socket = io("http://127.0.0.1:5000/");
     document.socket = socket;
     socket.on("connect", () => {
       //   console.log("socket connected");

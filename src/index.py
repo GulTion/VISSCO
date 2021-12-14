@@ -4,10 +4,6 @@ import webview
 from pynput.mouse import Controller
 
 mice = Controller()
-# $ git config --global user.name "John Doe"
-# $ git config --global user.email johndoe@example.com
-
-# I change this line sfjlskf
 
 
 class Api:

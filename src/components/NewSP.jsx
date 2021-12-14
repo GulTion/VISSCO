@@ -4,6 +4,9 @@ import { KEY_CONFIG } from "../utils/configs";
 import { sendRequestJoin, socektInit } from "../utils/initators";
 import { requestForScreenStream } from "../utils/streamHandler";
 import RemoteList from "./RemoteList";
+import "./_One.scss";
+import { Input } from "./MiniOne";
+
 const nanoid = customAlphabet(KEY_CONFIG.string, KEY_CONFIG.length);
 
 export default function NewSP() {
@@ -27,23 +30,34 @@ export default function NewSP() {
         res(id);
       });
       const socket = await new Promise(socektInit(id));
-      const screenStream = requestForScreenStream();
+      // const screenStream = requestForScreenStream();
     };
 
     initiator();
   }, []);
 
   return (
-    <div>
-      <h1>{state}</h1>
-      <label htmlFor="">Me ID : </label>
-      <input type="text" defaultValue={state} />
+    <div className="NewSp">
+      {/* <h1>{state}</h1> */}
+      <div className=" flex wrap acenter NewSp_head">
+        <Input disabled label={"Me ID : "} defaultValue={state} />
+        <Input label={"Remote ID :  "} id={"yourID"} />
+
+        <Input
+          value="Connect"
+          type="button"
+          label={"Click Me to"}
+          className="Button"
+          onClick={sendRequestJoin}
+        />
+
+        {/* </button> */}
+      </div>
+
       <RemoteList />
-      <hr />
-      <label htmlFor="">Remote ID : </label>
-      <input type="text" id="yourID" />
-      <button onClick={sendRequestJoin}>Connect</button>
-      <hr></hr>
+      {/* <hr /> */}
+
+      {/* <hr></hr> */}
     </div>
   );
 }

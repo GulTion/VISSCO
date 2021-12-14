@@ -21,6 +21,13 @@ export const emit = (id, data) => {
   socket.emit(id, { ...data, from: myid, to: id });
 };
 
+export const send = (id, data) => {
+  const peer = document.myapi.getRemote(id);
+  const { id: myid } = document.myapi;
+
+  peer.send(JSON.stringify({ ...data, from: myid, to: id }));
+};
+
 export const sendRequestJoin = () => {
   // grab id
   // subscribe for youID

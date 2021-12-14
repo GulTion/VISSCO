@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import { connect } from "react-redux";
 import store from "../store/store";
+import dataManager from "../utils/dataManger";
 import { emit, makePeerInstance } from "../utils/initators";
 
 import "./_One.scss";
@@ -51,7 +52,8 @@ export default connect((state) => ({
           });
         },
         onData: (data) => {
-          console.log({ data });
+          // console.log({ data });
+          dataManager(data, myid);
         },
       });
       // emit(id, {
@@ -65,9 +67,12 @@ export default connect((state) => ({
       {Object.keys(remotes)?.map((e) => {
         let { id, connected } = remotes[e];
         return (
-          <div key={e}>
-            <span>{id}</span>{" "}
-            <button onClick={handleCall(e)}>
+          <div className="RemoteList_list" key={e}>
+            <span className="RemoteList_list_name">{id}</span>{" "}
+            <button
+              className="RemoteList_list_button Button"
+              onClick={handleCall(e)}
+            >
               {!connected ? "Accept" : "Rejected"}
             </button>
           </div>

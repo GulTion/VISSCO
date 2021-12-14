@@ -1,4 +1,5 @@
 import store from "../store/store";
+import { send } from "./initators";
 const { myapi } = document;
 const videoEventManager = (id) => {
   // const { myid } = store.getState();
@@ -15,17 +16,17 @@ const videoEventManager = (id) => {
       y: Math.round(((y - top) * videoHeight) / height),
     };
 
-    let data = JSON.stringify({
-      from: myid,
-      to: id,
-      info,
-      type: "MOUSE",
-      data: "MOVE",
-    });
+    // let data = JSON.stringify({
+    //   from: myid,
+    //   to: id,
+    //   info,
+    //   type: "MOUSE",
+    //   data: "MOVE",
+    // });
     // console.log(data);
     // console.log(e);
     // document.p.send(data);
-    peer.send(data);
+    send(id, { info, type: "MOUSE", data: "MOVE" });
   });
   vid.addEventListener("keydown", (e) => {
     let data = JSON.stringify({

@@ -1,3 +1,23 @@
 body,html{
     // background: red;
 }
+
+.flex {
+    display: flex;
+}
+.column{
+    flex-flow: column;
+}
+.wrap{
+    flex-wrap: wrap;
+}
+
+.acenter{
+    align-items: center;
+}
+
+.NewSp{
+    // background: red;
+    width: 100%;
+    height: 100%;
+}

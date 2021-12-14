@@ -8,7 +8,8 @@ export default function Connection({ remote, stream }) {
 
   const [mouse, setMouse] = useState("X:X");
   const handleStream = async () => {
-    document.myapi.remotes[id].addStream(document.myapi.stream.screen);
+    // requestForScreenStream();
+    document.myapi.remotes[id].addStream(await requestForScreenStream());
   };
   useEffect(() => {
     // document.myapi

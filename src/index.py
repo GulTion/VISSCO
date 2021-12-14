@@ -46,5 +46,6 @@ def update_ticker():
 # } }
 
 if __name__ == '__main__':
-    window = webview.create_window('VISSCO', entry, js_api=Api())
+    window = webview.create_window(
+        'VISSCO', entry, js_api=Api())
     webview.start(update_ticker, debug=True)

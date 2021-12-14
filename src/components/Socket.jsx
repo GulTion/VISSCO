@@ -1,13 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { io } from "socket.io-client";
+import handShaker from "../utils/handShaker";
 export default function Socket({ id }) {
   const [conn, setConn] = useState(false);
   useEffect(() => {
-    const socket = io("https://chitraBackend.gultion.repl.co");
-    // const socket = io("http://127.0.0.1:5000/");
+    // const socket = io("https://chitraBackend.gultion.repl.co");
+    const socket = io("http://127.0.0.1:5000/");
     document.socket = socket;
     socket.on("connect", () => {
-      //   console.log("socket connected");
+      document.socket.on(id, (data) => {
+        handShaker(id, data, cuId);
+      });
+      document.socket.emit("makeio", { id: cuId });
       setConn(true);
     });
     socket.on("done", (data) => {

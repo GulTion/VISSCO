@@ -82,17 +82,23 @@ export default function SP() {
       handShaker(id, data, cuId);
     });
     document.socket.emit("makeio", { id: cuId });
-    document.socket.emit(cuId, { from: id, type: "JOIN", to: cuId });
+    document.socket.emit(cuId, { from: id, type: "REQUEST", to: cuId });
   };
 
   return (
     <div className="SP">
+      <h1>Peer</h1>
       {init && <button onClick={handleConnectSocekt}>Connect</button>}
       {init && <button onClick={handleCall()}>Permission Stream</button>}
       {init && <input value={id} />}
-      {!init && <input value={_id} onChange={(e) => set_id(e.target.value)} />}
-      {!init && <button onClick={handleConnectSocekt}>Connect</button>}
-      {!init && (
+      {init && <RemoteList />}
+      {havePeer && <Socket id={id} />}
+
+      <hr />
+      <h1>Client</h1>
+      {<input value={_id} onChange={(e) => set_id(e.target.value)} />}
+      {<button onClick={handleConnectSocekt}>Connect</button>}
+      {
         <button
           onClick={() => {
             window.location.hash = "#1";
@@ -101,14 +107,12 @@ export default function SP() {
         >
           Init
         </button>
-      )}
-      {havePeer && <Socket id={id} />}
-      {init && <RemoteList />}
+      }
 
       {/* <button onClick={}>MakeCall</button> */}
 
       <video
-        style={{ display: init ? "none" : "block" }}
+        // style={{ display: init ? "none" : "block" }}
         className="RemoteList_video"
         ref={vidRef}
         autoPlay

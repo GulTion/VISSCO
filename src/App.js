@@ -1,10 +1,11 @@
 import React, { useEffect } from "react";
-import PeerMake from "./components/PeerMake";
-// import RemoteList from "./components/RemoteList";
-import SP from "./components/SP";
-// import logo from "./logo.svg";
-// import store from "./store/store";
+import NewSP from "./components/NewSP";
+import RemoteTab from "./components/RemoteTab";
+// import {} from ""
+
 import "./_App.scss";
+
+import "./utils/configs";
 
 function App() {
   // useEffect(() => {
@@ -12,10 +13,7 @@ function App() {
   // });
   return (
     <div className="App">
-      {/* <PeerMake /> */}
-      <SP />
-      <h1>Hello22x</h1>
-      {/* <RemoteList /> */}
+      <RemoteTab arr={[]} />
     </div>
   );
 }

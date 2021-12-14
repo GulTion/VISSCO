@@ -1,7 +1,10 @@
 import store from "../store/store";
-
-const videoEventManager = (vid, toid) => {
-  const { myid } = store.getState();
+const { myapi } = document;
+const videoEventManager = (id) => {
+  // const { myid } = store.getState();
+  let myid = myapi.id;
+  let vid = document.querySelector(`#screen${id}`);
+  let peer = myapi.getRemote(id);
   vid.addEventListener("mousemove", (e) => {
     const { videoWidth, videoHeight } = vid;
     let { top, left, width, height } = vid.getBoundingClientRect();
@@ -14,19 +17,20 @@ const videoEventManager = (vid, toid) => {
 
     let data = JSON.stringify({
       from: myid,
-      to: toid,
+      to: id,
       info,
       type: "MOUSE",
       data: "MOVE",
     });
     // console.log(data);
     // console.log(e);
-    document.p.send(data);
+    // document.p.send(data);
+    peer.send(data);
   });
   vid.addEventListener("keydown", (e) => {
     let data = JSON.stringify({
       from: myid,
-      to: toid,
+      to: id,
       key: e.key,
       type: "KEYBOARD",
       data: "DOWN",
@@ -37,7 +41,7 @@ const videoEventManager = (vid, toid) => {
   vid.addEventListener("keyup", (e) => {
     let data = JSON.stringify({
       from: myid,
-      to: toid,
+      to: id,
       key: e.key,
       type: "KEYBOARD",
       data: "UP",
@@ -48,7 +52,7 @@ const videoEventManager = (vid, toid) => {
   vid.addEventListener("onclick", (e) => {
     let data = JSON.stringify({
       from: myid,
-      to: toid,
+      to: id,
       key: "LEFT",
       type: "MOUSE",
       data: "CLICK",
@@ -58,7 +62,7 @@ const videoEventManager = (vid, toid) => {
   vid.addEventListener("ondbclick", (e) => {
     let data = JSON.stringify({
       from: myid,
-      to: toid,
+      to: id,
       key: "RIGHT",
       type: "MOUSE",
       data: "CLICK",

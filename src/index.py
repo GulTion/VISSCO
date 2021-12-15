@@ -5,11 +5,20 @@ from pynput.mouse import Controller
 
 mice = Controller()
 
+mapper = {
+    "Shift": "shfit"
+}
+
+
+def map(js):
+    return mapper[js]
+
 
 class Api:
     def handleMouse(self, data):
         if(data["type"] == "move"):
             mice.position = (data["data"]["x"], data["data"]["y"])
+            keyboard.press(map("Shift"))
             # cdodnsfn f
 
             # mouse.position = (data["data"]["x"], data["data"]["y"])

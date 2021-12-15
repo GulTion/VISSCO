@@ -7,20 +7,11 @@ const dataManager = (data, myid) => {
   if (myid !== mess.from) {
     switch (mess.type) {
       case "MOUSE":
-        // console.log("move_my_mouse", info.x, info.y);
-        // pywebview.api.handleMouse({
-        //   type: "move",
-        //   data: { x: info.x, y: info.y },
-        // });
-        // console.log(mess);
-        switch (mess.data) {
-          case "MOVE":
-            // myapi.setMouse[data.from](`x:${mess.info.x}, y:${mess.info.y}`);
-            break;
+        pywebview.api.handleMouse({
+          type: "move",
+          data: { x: info.x, y: info.y },
+        });
 
-          default:
-            break;
-        }
         break;
 
       default:

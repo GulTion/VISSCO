@@ -2,6 +2,8 @@ import React, { useEffect, useRef, useState } from "react";
 import streamHandler, { requestForScreenStream } from "../utils/streamHandler";
 import "regenerator-runtime/runtime";
 const { myapi } = document;
+import "./_One.scss";
+
 export default function Connection({ remote, stream }) {
   const ref = useRef();
   const { id, type } = remote;
@@ -40,6 +42,7 @@ export default function Connection({ remote, stream }) {
       {type === "client" && <button onClick={handleStream}>Share</button>}
       {type === "remote" && (
         <video
+          className="Screen"
           muted={true}
           autoPlay
           src={null}

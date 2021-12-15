@@ -1,9 +1,10 @@
 import { io } from "socket.io-client";
 import handShaker from "./handShaker";
 import SimplePeer from "simple-peer";
+import { SOCKET_URL } from "./configs";
 
 export const socektInit = (id) => (res, rej) => {
-  const socket = io("http://127.0.0.1:5000/");
+  const socket = io(SOCKET_URL);
   document.myapi.socket = socket;
   socket.on("connect", () => {
     socket.on(id, (data) => {

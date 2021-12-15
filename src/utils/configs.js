@@ -29,6 +29,6 @@ const myapi = {
 document.myapi = myapi;
 
 export const KEY_CONFIG = { string: "13", length: 2 };
-// export const SOCKET_URL = "https://chitraBackend.gultion.repl.co";
+export const SOCKET_URL = "https://chitraBackend.gultion.repl.co";
 // export const SOCKET_URL = "http://127.0.0.1:5000/";
-export const SOCKET_URL = "https://kind-owl-67.loca.lt/";
+// export const SOCKET_URL = "https://kind-owl-67.loca.lt/";

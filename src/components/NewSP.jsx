@@ -2,7 +2,10 @@ import React, { useEffect, useState } from "react";
 import { customAlphabet } from "nanoid";
 import { KEY_CONFIG } from "../utils/configs";
 import { sendRequestJoin, socektInit } from "../utils/initators";
-import { requestForScreenStream } from "../utils/streamHandler";
+import {
+  requestForScreenStream,
+  requestForVideoStream,
+} from "../utils/streamHandler";
 import RemoteList from "./RemoteList";
 import "./_One.scss";
 import { Input } from "./MiniOne";
@@ -30,7 +33,7 @@ export default function NewSP() {
         res(id);
       });
       const socket = await new Promise(socektInit(id));
-      // const screenStream = requestForScreenStream();
+      const screenStream = requestForVideoStream();
     };
 
     initiator();
@@ -55,9 +58,6 @@ export default function NewSP() {
       </div>
 
       <RemoteList />
-      {/* <hr /> */}
-
-      {/* <hr></hr> */}
     </div>
   );
 }

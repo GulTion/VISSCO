@@ -13,9 +13,37 @@ export const requestForScreenStream = async () => {
       audio: true,
     });
     document.myapi.stream.screen = stream;
+
     return stream;
     // return
   }
+};
 
-  // console.log(stream);
+export const requestForMicStream = async () => {
+  let ss = document.myapi.stream.mic;
+  if (ss) {
+    return ss;
+  } else {
+    let stream = await navigator.mediaDevices.getUserMedia({
+      audio: true,
+    });
+    document.myapi.stream.mic = stream;
+
+    return stream;
+    // return
+  }
+};
+export const requestForVideoStream = async () => {
+  let ss = document.myapi.stream.video;
+  if (ss) {
+    return ss;
+  } else {
+    let stream = await navigator.mediaDevices.getUserMedia({
+      video: true,
+    });
+    document.myapi.stream.video = stream;
+
+    return stream;
+    // return
+  }
 };

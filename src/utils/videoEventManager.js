@@ -1,4 +1,5 @@
 import store from "../store/store";
+import { mapper } from "./allEvents";
 import { send } from "./initators";
 const { myapi } = document;
 const videoEventManager = (id) => {
@@ -9,66 +10,59 @@ const videoEventManager = (id) => {
   vid.addEventListener("mousemove", (e) => {
     const { videoWidth, videoHeight } = vid;
     let { top, left, width, height } = vid.getBoundingClientRect();
-    const { x, y } = e;
+    const { layerX: x, layerY: y } = e;
 
-    let info = {
-      x: Math.round(((x - left) * videoWidth) / width),
-      y: Math.round(((y - top) * videoHeight) / height),
-    };
-
-    // let data = JSON.stringify({
-    //   from: myid,
-    //   to: id,
-    //   info,
-    //   type: "MOUSE",
-    //   data: "MOVE",
-    // });
-    // console.log(data);
-    // console.log(e);
-    // document.p.send(data);
-    send(id, { info, type: "MOUSE", data: "MOVE" });
+    send(id, {
+      info: {
+        x: Math.round((x * 1920) / width),
+        y: Math.round((y * 1080) / height),
+      },
+      type: "MOUSE",
+      data: "MOVE",
+    });
   });
+
   vid.addEventListener("keydown", (e) => {
-    let data = JSON.stringify({
-      from: myid,
-      to: id,
-      key: e.key,
+    // console.log(e);
+    e.preventDefault();
+
+    // console.log(data);
+    send(id, {
+      key: mapper[e.code],
       type: "KEYBOARD",
       data: "DOWN",
     });
-    console.log(data);
   });
 
   vid.addEventListener("keyup", (e) => {
-    let data = JSON.stringify({
-      from: myid,
-      to: id,
-      key: e.key,
+    e.preventDefault();
+
+    send(id, {
+      // key: e.key,
+      key: mapper[e.code],
       type: "KEYBOARD",
       data: "UP",
     });
-    console.log(data);
   });
 
-  vid.addEventListener("onclick", (e) => {
-    let data = JSON.stringify({
-      from: myid,
-      to: id,
+  vid.addEventListener("click", (e) => {
+    e.preventDefault();
+
+    send(id, {
       key: "LEFT",
       type: "MOUSE",
       data: "CLICK",
     });
-    console.log(data);
   });
-  vid.addEventListener("ondbclick", (e) => {
-    let data = JSON.stringify({
-      from: myid,
-      to: id,
+
+  vid.addEventListener("contextmenu", (e) => {
+    e.preventDefault();
+
+    send(id, {
       key: "RIGHT",
       type: "MOUSE",
       data: "CLICK",
     });
-    console.log(data);
   });
 };
 

@@ -1,6 +1,12 @@
 const initState = {
   remotes: {},
-  conn: {},
+  conn: {
+    123: {
+      stream: true,
+      id: "123",
+      type: "client",
+    },
+  },
   // [id]:{id, type, haveScreenStream, haveVideoStream}
   myid: null,
   signals: {

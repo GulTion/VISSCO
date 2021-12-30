@@ -46,6 +46,7 @@ const handShaker = (data) => {
               // console.log(stream);
               document.myapi.setStream(data.from, stream);
               let vid = document.querySelector(`#screen${data.from}`);
+              // if()
               vid.srcObject = stream;
               videoEventManager(data.from);
             },

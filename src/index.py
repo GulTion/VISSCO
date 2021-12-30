@@ -17,15 +17,10 @@ def map(js):
 
 class Api:
     def handleMouse(self, data):
-        if(data["type"] == "move"):
-            mice.position = (data["data"]["x"], data["data"]["y"])
-            # keyboard.press(map("Shift"))
-            # cdodnsfn f
 
-            # mouse.position = (data["data"]["x"], data["data"]["y"])
-    def handleKeyBoard(self, data):
-        if(data["press"]):
-            keyboard.press(map(data["key"]))
+        if(data["type"] == "move"):
+            mice.position = (int(data["data"]["x"]), int(data["data"]["y"]))
+            print((data["data"]["x"], data["data"]["y"]))
 
 
 def get_entrypoint():

@@ -1,5 +1,11 @@
 export default () => {};
-
+const statusFormate = {
+  screenShared: false,
+  micConnected: false,
+  videoConnected: false,
+  micPaused: false,
+  videoPaused: false,
+};
 const myapi = {
   socket: null,
   id: null,
@@ -10,6 +16,8 @@ const myapi = {
   stream: {
     screen: null,
     video: null,
+    mic: null,
+    audio: null,
   },
   remoteStream: {},
   addRemotes: function (id, peer) {
@@ -24,11 +32,14 @@ const myapi = {
   getStream: function (id) {
     return this.remoteStream[id];
   },
+  setStatus(id, status) {},
 };
 
 document.myapi = myapi;
 
 export const KEY_CONFIG = { string: "13", length: 2 };
-export const SOCKET_URL = "https://chitraBackend.gultion.repl.co";
-// export const SOCKET_URL = "http://127.0.0.1:5000/";
+// export const SOCKET_URL = "https://chitraBackend.gultion.repl.co";
+export const SOCKET_URL = "http://127.0.0.1:5000/";
 // export const SOCKET_URL = "https://kind-owl-67.loca.lt/";
+// export const SOCKET_URL = "https://miniServer.gultion.repl.co";
+// export const

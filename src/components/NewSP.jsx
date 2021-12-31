@@ -33,7 +33,7 @@ export default function NewSP() {
         res(id);
       });
       const socket = await new Promise(socektInit(id));
-      const screenStream = requestForVideoStream();
+      // const screenStream = requestForVideoStream();
     };
 
     initiator();

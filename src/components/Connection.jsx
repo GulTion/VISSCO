@@ -54,7 +54,7 @@ export default function Connection({ remote, stream }) {
           tabIndex={1}
         ></video>
       )}
-      <VideoCard id={id} />
+      {/* <VideoCard id={id} /> */}
     </div>
   );
 }

@@ -7,13 +7,14 @@ const dataManager = (data, myid) => {
   if (myid !== mess.from) {
     switch (mess.type) {
       case "MOUSE":
-        // window.pywebview.api.handleMouse(mess);
-        console.log(mess);
+        window.pywebview.api.handleMouse(mess);
+        // console.log(mess);
 
         break;
 
       case "KEYBOARD":
-        console.log(mess);
+        window.pywebview.api.handleKeyboard(mess);
+        // console.log(mess);
         break;
 
       default:

@@ -28,7 +28,7 @@ export default function Connection({ remote, stream }) {
         screen.focus();
         screen.srcObject = document.myapi.getStream(id);
         screen.play();
-        console.log("Rrr");
+        // console.log("Rrr");
       }
     } else {
       // if (screen) screen.srcObject = document.myapi.stream.screen;

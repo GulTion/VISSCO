@@ -15,7 +15,7 @@ export default function Socket({ id }) {
       setConn(true);
     });
     socket.on("done", (data) => {
-      console.log(data);
+      // console.log(data);
       //   socket.emit("mousemove", { x: data.x + 2, y: data.y + 2 });
     });
     // socket.on(id, (data) => {

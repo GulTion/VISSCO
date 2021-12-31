@@ -31,13 +31,13 @@ export default function SP() {
     // console.log(p);
     // window.p = p;
     p.on("signal", (data) => {
-      console.log("SIGNAL", JSON.stringify(data));
+      // console.log("SIGNAL", JSON.stringify(data));
 
       signalManager(data);
     });
 
     p.on("connect", () => {
-      console.log("CONNECT");
+      // console.log("CONNECT");
       // store.dispatch({type:"EDIT_PEER", data:{id:}})
       const { myid } = store.getState();
 

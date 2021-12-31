@@ -20,7 +20,7 @@ const handShaker = (data) => {
         let peer = document.myapi.getRemote(data.from);
         if (peer) {
           // offer is comming for accepting the signla
-          console.log(data);
+          // console.log(data);
           peer.signal(data.offer);
         } else {
           makePeerInstance({
@@ -47,7 +47,7 @@ const handShaker = (data) => {
             },
             onStream: (stream) => {
               // console.log(stream);
-              console.log("NEW STREAM");
+              // console.log("NEW STREAM");
 
               document.myapi.setStream(data.from, stream);
               let vid = document.querySelector(`#screen${data.from}`);
@@ -56,7 +56,7 @@ const handShaker = (data) => {
               videoEventManager(data.from);
             },
             onData: (data) => {
-              console.log({ data });
+              // console.log({ data });
             },
           });
         }

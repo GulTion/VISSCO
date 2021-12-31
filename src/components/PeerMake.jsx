@@ -28,7 +28,7 @@ export default connect(
     var client = document.me.connect(youKey);
     client.on("open", () => {
       client.on("data", (data) => {
-        console.log(data);
+        // console.log(data);
       });
       //   setInterval(() => {
       client.send({ a: window.screen.width, b: window.screen.height });

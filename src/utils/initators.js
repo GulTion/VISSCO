@@ -8,7 +8,7 @@ export const socektInit = (id) => (res, rej) => {
   document.myapi.socket = socket;
   socket.on("connect", () => {
     socket.on(id, (data) => {
-      console.log(`you`, data);
+      // console.log(`you`, data);
       handShaker(data);
     });
     socket.emit("makeio", { id });

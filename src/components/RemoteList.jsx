@@ -14,21 +14,6 @@ export default connect((state) => ({
 
   const handleCall = (id) => {
     return () => {
-      // let stream = await navigator.mediaDevices.getDisplayMedia({
-      //   video: true,
-      //   audio: true,
-      // });
-
-      // document.socket.emit(myid, {
-      //   type: "OFFER",
-      //   from: myid,
-      //   to: id,
-      //   offerType: "normal",
-      //   offer: NormalSignal.offer,
-      // });
-      // const { id: myid } = document;
-      // console.log(id);
-
       makePeerInstance({
         id,
         init: true,
@@ -42,8 +27,6 @@ export default connect((state) => ({
           });
         },
         onSignal: (signal) => {
-          console.log({ signal });
-
           emit(id, {
             type: "REQUEST_SIGNAL",
             offer: signal,

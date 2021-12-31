@@ -47,3 +47,17 @@ export const requestForVideoStream = async () => {
     // return
   }
 };
+
+export const requestForAllStream = async () => {
+  let screen = await requestForScreenStream();
+  let video = await requestForVideoStream();
+  let mic = await requestForMicStream();
+  let stream = new MediaStream([
+    ...mic.getTracks(),
+    ...video.getTracks(),
+
+    ...screen.getTracks(),
+  ]);
+  document.myapi.stream = stream;
+  return stream;
+};

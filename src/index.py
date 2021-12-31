@@ -5,11 +5,6 @@ from pynput.mouse import Controller
 
 mice = Controller()
 
-mapper = {
-    "Shift": "shfit",
-    "a": "A"
-}
-
 
 def map(js):
     return mapper[js]

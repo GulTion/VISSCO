@@ -2,11 +2,13 @@ import React, { useEffect, useRef, useState } from "react";
 import streamHandler, {
   requestForMicStream,
   requestForScreenStream,
+  requestForAllStream,
 } from "../utils/streamHandler";
 import "regenerator-runtime/runtime";
 import "./_One.scss";
 import { async } from "fast-glob";
 import { ScriptElementKind } from "typescript";
+import VideoCard from "./VideoCard";
 const { myapi } = document;
 
 export default function Connection({ remote, stream }) {
@@ -52,6 +54,7 @@ export default function Connection({ remote, stream }) {
           tabIndex={1}
         ></video>
       )}
+      <VideoCard id={id} />
     </div>
   );
 }
@@ -61,7 +64,7 @@ const Header = ({ remote }) => {
 
   const handleStream = async () => {
     // requestForScreenStream();
-    document.myapi.remotes[id].addStream(await requestForScreenStream());
+    document.myapi.remotes[id].addStream(await requestForAllStream());
   };
   const handleMic = async () => {
     document.myapi.remotes[id].addStream(await requestForMicStream());
@@ -73,8 +76,8 @@ const Header = ({ remote }) => {
       {remote.type === "client" && (
         <button onClick={handleStream}>Screen</button>
       )}
-      <button>Video</button>
-      <button onClick={handleMic}>Mic</button>
+      <button>Video Turn Off</button>
+      <button onClick={handleMic}>Mute</button>
     </div>
   );
 };

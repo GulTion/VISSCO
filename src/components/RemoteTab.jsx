@@ -10,7 +10,7 @@ const TabPanel = ({ children, now, i }) => {
 };
 export default connect((state) => ({ remotes: state.conn }))(
   function RemoteTab({ remotes, arr }) {
-    const [now, setNow] = useState(0);
+    const [now, setNow] = useState(1);
 
     const handleSet = (i) => {
       return () => {

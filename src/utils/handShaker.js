@@ -1,8 +1,8 @@
 import store from "../store/store";
-import { emit, makePeerInstance } from "./initators";
+import { emit, makePeerInstance, statusMake } from "./initators";
 import videoEventManager from "./videoEventManager";
 const handShaker = (data) => {
-  const { signalApi, id: myid } = document.myapi;
+  const { signalApi, id: myid, getStatus, setStatus, status } = document.myapi;
 
   if (data.from !== myid && data.to === myid) {
     // console.log(`inner`, data);
@@ -20,6 +20,7 @@ const handShaker = (data) => {
         let peer = document.myapi.getRemote(data.from);
         if (peer) {
           // offer is comming for accepting the signla
+          console.log(data);
           peer.signal(data.offer);
         } else {
           makePeerInstance({
@@ -27,13 +28,15 @@ const handShaker = (data) => {
             init: false,
             offer: data.offer,
             onConnect: () => {
+              statusMake(data.from);
+
               store.dispatch({
                 type: "CONNECTION",
                 data: { id: data.from, type: "remote" },
               });
             },
             onSignal: (signal) => {
-              console.log(signal);
+              // console.log(signal);
 
               emit(data.from, {
                 type: "REQUEST_ANWSER",
@@ -44,10 +47,12 @@ const handShaker = (data) => {
             },
             onStream: (stream) => {
               // console.log(stream);
+              console.log("NEW STREAM");
+
               document.myapi.setStream(data.from, stream);
               let vid = document.querySelector(`#screen${data.from}`);
               // if()
-              vid.srcObject = stream;
+              vid.srcObject = new MediaStream([stream.getTracks()[2]]);
               videoEventManager(data.from);
             },
             onData: (data) => {
@@ -60,6 +65,13 @@ const handShaker = (data) => {
 
       case "REQUEST_ANWSER":
         // accept normal anwser
+        const { screenConncted, micConnected, videoConnected, connected } =
+          status[Number(data.from)];
+        // console.log(getStatus(data.from));
+        // console.log(status[Number(data.from)]);
+
+        statusMake(data.from);
+
         document.myapi.getRemote(data.from).signal(data.offer);
 
         break;

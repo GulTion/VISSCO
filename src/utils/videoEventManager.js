@@ -23,10 +23,7 @@ const videoEventManager = (id) => {
   });
 
   vid.addEventListener("keydown", (e) => {
-    // console.log(e);
     e.preventDefault();
-
-    // console.log(data);
     send(id, {
       key: mapper[e.code],
       type: "KEYBOARD",
@@ -38,7 +35,6 @@ const videoEventManager = (id) => {
     e.preventDefault();
 
     send(id, {
-      // key: e.key,
       key: mapper[e.code],
       type: "KEYBOARD",
       data: "UP",

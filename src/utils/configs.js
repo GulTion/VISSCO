@@ -15,12 +15,7 @@ const myapi = {
   setMouse: {},
   status: {},
 
-  stream: {
-    screen: null,
-    video: null,
-    mic: null,
-    audio: null,
-  },
+  stream: null,
   remoteStream: {},
   addRemotes: function (id, peer) {
     this.remotes[id] = peer;

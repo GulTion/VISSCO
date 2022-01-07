@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { connect } from "react-redux";
 import Connection from "./Connection";
 import NewSP from "./NewSP";
+import VideoGallery from "./VideoGallery/VideoGallery";
 
 // import { home } from "../assets/I";
 import "./_One.scss";
@@ -10,7 +11,7 @@ const TabPanel = ({ children, now, i }) => {
 };
 export default connect((state) => ({ remotes: state.conn }))(
   function RemoteTab({ remotes, arr }) {
-    const [now, setNow] = useState(0);
+    const [now, setNow] = useState(1);
 
     const handleSet = (i) => {
       return () => {
@@ -22,7 +23,7 @@ export default connect((state) => ({ remotes: state.conn }))(
       <>
         <div className="RemoteTab">
           <div
-            className={`RemoteTab_tab ${
+            className={`RemoteTab_tab RemoteTab_home ${
               now === 0 ? "RemoteTab_tab_active" : ""
             }`}
             onClick={handleSet(0)}
@@ -43,6 +44,14 @@ export default connect((state) => ({ remotes: state.conn }))(
               </div>
             );
           })}
+          <div
+            className={`RemoteTab_tab RemoteTab_home ${
+              now === 0xffffff ? "RemoteTab_tab_active" : ""
+            }`}
+            onClick={handleSet(0xffffff)}
+          >
+            VideoGallery
+          </div>
         </div>
         <TabPanel now={now} i={0}>
           <NewSP />
@@ -54,6 +63,11 @@ export default connect((state) => ({ remotes: state.conn }))(
             </TabPanel>
           );
         })}
+        <TabPanel now={now} i={0xffffff}>
+          {/* <NewSP />
+          < */}
+          <VideoGallery />
+        </TabPanel>
       </>
     );
   }

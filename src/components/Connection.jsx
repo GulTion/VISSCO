@@ -9,6 +9,8 @@ import "./_One.scss";
 import { async } from "fast-glob";
 import { ScriptElementKind } from "typescript";
 import VideoCard from "./VideoCard";
+import Controller from "./Controller/Controller";
+// import Front from "./Front/Front";
 const { myapi } = document;
 
 export default function Connection({ remote, stream }) {
@@ -31,6 +33,10 @@ export default function Connection({ remote, stream }) {
         // console.log("Rrr");
       }
     } else {
+      // if (remote.type === "client") {
+      //   screen.srcObject = document.myapi.getStream(id);
+      //   screen.play();
+      // }
       // if (screen) screen.srcObject = document.myapi.stream.screen;
     }
     // console.log("rinn");
@@ -40,6 +46,8 @@ export default function Connection({ remote, stream }) {
     <div className="Connection">
       {/* {type===""} */}
       <Header remote={remote} />
+      <Controller haveScreen={remote.type === "client"} id={remote.id} />
+      {/* <Front /> */}
       {type === "client" && <div>{mouse}</div>}
       {/* {type === "client" && <button onClick={handleStream}>Share</button>} */}
       {type === "remote" && (
@@ -52,6 +60,18 @@ export default function Connection({ remote, stream }) {
           // style={}
           ref={ref}
           tabIndex={1}
+        ></video>
+      )}
+      {type === "client" && (
+        <video
+          className="MyScreen"
+          // muted={true}
+          autoPlay
+          src={null}
+          id={`myscreen${id}`}
+          // style={}
+          // ref={ref}
+          // tabIndex={1}
         ></video>
       )}
       {/* <VideoCard id={id} /> */}
@@ -76,8 +96,8 @@ const Header = ({ remote }) => {
       {remote.type === "client" && (
         <button onClick={handleStream}>Screen</button>
       )}
-      <button>Video Turn Off</button>
-      <button onClick={handleMic}>Mute</button>
+      {/* <button>Video Turn Off</button>
+      <button onClick={handleMic}>Mute</button> */}
     </div>
   );
 };

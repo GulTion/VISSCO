@@ -1,0 +1,26 @@
+.Controller{
+    // background: red;
+    background: #C7539E;
+background: -webkit-linear-gradient(top left, #C7539E, #67A1FE);
+background: -moz-linear-gradient(top left, #C7539E, #67A1FE);
+background: linear-gradient(to bottom right, #C7539E, #67A1FE);
+padding: 5px 20px;
+border-radius: 100px;
+border: 5px solid rgba(0, 0, 0, 0.144);
+box-shadow: 0 5px 10px rgba(0, 0, 0, 0.267);
+z-index: 1;
+
+
+&_control{
+    margin: 5px 10px;
+    // height: 32px;
+    cursor: pointer; 
+// box-shadow: 0 5px 10px rgba(0, 0, 0,0.5);
+
+}
+&_active{
+    opacity: 0.5;
+// box-shadow: unset;
+
+}
+}

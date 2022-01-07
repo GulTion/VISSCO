@@ -12,10 +12,10 @@ def map(js):
 
 class Api:
     def handleMouse(self, data):
-
-        if(data["type"] == "move"):
-            mice.position = (int(data["data"]["x"]), int(data["data"]["y"]))
-            print((data["data"]["x"], data["data"]["y"]))
+        print(data)
+        if(data["data"] == "MOVE"):
+            # if()
+            mice.position = (data["info"]["x"], data["info"]["y"])
 
 
 def get_entrypoint():

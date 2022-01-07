@@ -4,48 +4,48 @@ import "regenerator-runtime/runtime";
 export default () => {};
 
 export const requestForScreenStream = async () => {
-  let ss = document.myapi.stream.screen;
-  if (ss) {
-    return ss;
-  } else {
-    let stream = await navigator.mediaDevices.getDisplayMedia({
-      video: true,
-      audio: true,
-    });
-    document.myapi.stream.screen = stream;
+  // let ss = document.myapi.stream.screen;
+  // if (ss) {
+  //   return ss;
+  // } else {
+  let stream = await navigator.mediaDevices.getDisplayMedia({
+    video: true,
+    audio: true,
+  });
+  // document.myapi.stream.screen = stream;
 
-    return stream;
-    // return
-  }
+  return stream;
+  // return
+  // }
 };
 
 export const requestForMicStream = async () => {
-  let ss = document.myapi.stream.mic;
-  if (ss) {
-    return ss;
-  } else {
-    let stream = await navigator.mediaDevices.getUserMedia({
-      audio: true,
-    });
-    document.myapi.stream.mic = stream;
+  // let ss = document.myapi.stream.mic;
+  // if (ss) {
+  //   return ss;
+  // } else {
+  let stream = await navigator.mediaDevices.getUserMedia({
+    audio: true,
+  });
+  // document.myapi.stream.mic = stream;
 
-    return stream;
-    // return
-  }
+  return stream;
+  // return
+  // }
 };
 export const requestForVideoStream = async () => {
-  let ss = document.myapi.stream.video;
-  if (ss) {
-    return ss;
-  } else {
-    let stream = await navigator.mediaDevices.getUserMedia({
-      video: true,
-    });
-    document.myapi.stream.video = stream;
+  // let ss = document.myapi.stream.video;
+  // if (ss) {
+  //   return ss;
+  // } else {
+  let stream = await navigator.mediaDevices.getUserMedia({
+    video: true,
+  });
+  // document.myapi.stream.video = stream;
 
-    return stream;
-    // return
-  }
+  return stream;
+  // return
+  // }
 };
 
 export const requestForAllStream = async () => {
@@ -58,6 +58,7 @@ export const requestForAllStream = async () => {
 
     ...screen.getTracks(),
   ]);
+  stream.getTracks().forEach((e) => (e.enabled = false));
   document.myapi.stream = stream;
   return stream;
 };

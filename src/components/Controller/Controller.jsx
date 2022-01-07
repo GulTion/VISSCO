@@ -20,6 +20,9 @@ export default function Controller({ haveScreen, id }) {
         if (!document.myapi.stream) {
           document.myapi.remotes[id].addStream(await requestForAllStream());
           const [m, v, s] = document.myapi.stream.getTracks();
+          // document.getElementById(`myscreen${id}`).srcObject = new MediaStream(
+          //   s]
+          // );
           s.enabled = true;
           // document.myapi.stream.getTracks().forEach(e=>e.enabled = !e.enabled)
         } else {

@@ -1,12 +1,12 @@
 import "./index.scss";
 // import debounce from "lodash/debounce";
 import { debounce } from "lodash";
-function recalculateLayout() {
-  const gallery = document.getElementById("gallery");
+export function recalculateLayout() {
+  const gallery = document.querySelector(".VideoGallery");
   const aspectRatio = 16 / 9;
   const screenWidth = document.body.getBoundingClientRect().width;
   const screenHeight = document.body.getBoundingClientRect().height;
-  const videoCount = document.getElementsByTagName("video").length;
+  const videoCount = document.querySelectorAll(".video").length;
 
   // or use this nice lib: https://github.com/fzembow/rect-scaler
   function calculateLayout(
@@ -63,6 +63,9 @@ function recalculateLayout() {
   gallery.style.setProperty("--cols", cols + "");
 }
 
-const debouncedRecalculateLayout = debounce(recalculateLayout, 50);
-window.addEventListener("resize", debouncedRecalculateLayout);
-debouncedRecalculateLayout();
+// const debouncedRecalculateLayout = debounce(recalculateLayout, 50);
+window.addEventListener("resize", recalculateLayout);
+// debouncedRecalculateLayout();
+// setTimeout(() => {
+//   recalculateLayout();
+// }, 1000);

@@ -8,20 +8,20 @@
 //     background-color: #1c1c1e;
 //   }
   
-  #gallery {
+  .VideoGallery {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
     max-width: calc(var(--width) * var(--cols));
   }
   
-  .video-container {
+  .VideoView {
     width: var(--width);
     height: var(--height);
     background-color: #3a3a3e;
+    video {
+      height: 100%;
+      width: 100%;
+    }
   }
   
-  video {
-    height: 100%;
-    width: 100%;
-  }

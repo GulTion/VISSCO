@@ -10,6 +10,7 @@ import { async } from "fast-glob";
 import { ScriptElementKind } from "typescript";
 import VideoCard from "./VideoCard";
 import Controller from "./Controller/Controller";
+import Front from "./Front/Front";
 // import Front from "./Front/Front";
 const { myapi } = document;
 
@@ -30,52 +31,48 @@ export default function Connection({ remote, stream }) {
         screen.focus();
         screen.srcObject = document.myapi.getStream(id);
         screen.play();
-        // console.log("Rrr");
       }
-    } else {
-      // if (remote.type === "client") {
-      //   screen.srcObject = document.myapi.getStream(id);
-      //   screen.play();
-      // }
-      // if (screen) screen.srcObject = document.myapi.stream.screen;
     }
-    // console.log("rinn");
   }, [stream]);
 
   return (
-    <div className="Connection">
-      {/* {type===""} */}
-      <Header remote={remote} />
-      <Controller haveScreen={remote.type === "client"} id={remote.id} />
+    <>
+      <div className="Connection">
+        {/* {type===""} */}
+        {/* <Header remote={remote} /> */}
+        <Controller haveScreen={remote.type === "client"} id={remote.id} />
+        {/* <Front /> */}
+        {/* {type === "client" && <div>{mouse}</div>} */}
+        {/* {type === "client" && <button onClick={handleStream}>Share</button>} */}
+        {type === "remote" && (
+          <video
+            className="Screen"
+            // muted={true}
+            autoPlay
+            src={null}
+            id={`screen${id}`}
+            // style={}
+            ref={ref}
+            tabIndex={1}
+          ></video>
+        )}
+        {type === "client" && (
+          <video
+            className="MyScreen"
+            // muted={true}
+            autoPlay
+            src={null}
+            id={`myscreen${id}`}
+            // style={}
+            // ref={ref}
+            // tabIndex={1}
+          ></video>
+        )}
+        {/* <Front /> */}
+        {/* <VideoCard id={id} /> */}
+      </div>
       {/* <Front /> */}
-      {type === "client" && <div>{mouse}</div>}
-      {/* {type === "client" && <button onClick={handleStream}>Share</button>} */}
-      {type === "remote" && (
-        <video
-          className="Screen"
-          // muted={true}
-          autoPlay
-          src={null}
-          id={`screen${id}`}
-          // style={}
-          ref={ref}
-          tabIndex={1}
-        ></video>
-      )}
-      {type === "client" && (
-        <video
-          className="MyScreen"
-          // muted={true}
-          autoPlay
-          src={null}
-          id={`myscreen${id}`}
-          // style={}
-          // ref={ref}
-          // tabIndex={1}
-        ></video>
-      )}
-      {/* <VideoCard id={id} /> */}
-    </div>
+    </>
   );
 }
 

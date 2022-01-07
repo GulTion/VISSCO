@@ -6,13 +6,13 @@ export default function VideoCard({ id }) {
   const ref = useRef();
   useEffect(() => {
     setTimeout(() => {
-      ref.current.srcObject = document.myapi.stream.video;
+      ref.current.srcObject = document.myapi.stream;
     }, 2000);
   }, []);
 
   return (
     <Rnd
-      bounds=".Connection"
+      bounds=".VideoGallery"
       lockAspectRatio={true}
       className="VideoCard"
       maxWidth={"600"}
@@ -27,7 +27,7 @@ export default function VideoCard({ id }) {
           ref={ref}
           autoPlay
           src={null}
-          id={`video${id}`}
+          id={`myvideo`}
           className="VideoCard_video"
         ></video>
         <div className="VideoCard_wrapper_control">

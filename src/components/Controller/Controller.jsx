@@ -6,12 +6,21 @@ import micon from "./ico/micon.png";
 import camoff from "./ico/camoff.png";
 import camon from "./ico/camon.png";
 import screen from "./ico/screen.png";
+import chatoff from "./ico/chatoff.png";
+import chaton from "./ico/chaton.png";
 import { requestForAllStream } from "../../utils/streamHandler";
-export default function Controller({ haveScreen, id }) {
+import ChatBox from "./ChatBox";
+export default function Controller({
+  bounds = ".Connection",
+  haveScreen,
+  id,
+  addMyVideo = false,
+}) {
   const [state, setState] = useState({
     mic: false,
     screen: false,
     video: false,
+    chat: false,
   });
 
   const handleState = (p) => {
@@ -47,35 +56,56 @@ export default function Controller({ haveScreen, id }) {
           const [m, v, s] = document.myapi.stream.getTracks();
           m.enabled = !m.enabled;
         }
+      } else if (p.type === "chat") {
       }
       setState((k) => ({ ...k, ...p }));
     };
   };
   return (
-    <Rnd bounds=".Connection" className="Controller" enableResizing={{}}>
-      <img
-        className={`Controller_control nodrag Controller_${
-          !state.mic ? "active" : ""
-        }`}
-        src={state.mic ? micon : micoff}
-        onClick={handleState({ mic: !state.mic, type: "mic" })}
-      ></img>
-      <img
-        className={`Controller_control nodrag Controller_${
-          !state.video ? "active" : ""
-        }`}
-        src={state.video ? camon : camoff}
-        onClick={handleState({ video: !state.video, type: "video" })}
-      ></img>
-      {haveScreen && (
-        <img
-          className={`Controller_control nodrag Controller_${
-            !state.screen ? "active" : ""
-          }`}
-          src={state.screen ? screen : screen}
-          onClick={handleState({ screen: !state.screen, type: "screen" })}
-        ></img>
-      )}
-    </Rnd>
+    <>
+      <Rnd
+        bounds={bounds}
+        className="Controller"
+        enableResizing={{}}
+        // lockAspectRatio={true}
+        // default={{ y: 60 }}
+      >
+        {addMyVideo && <video className="Controller_video" id="myVideo" />}
+        {/* <audio className="" /> */}
+        <div className="Controller_bar">
+          <img
+            className={`Controller_control nodrag Controller_${
+              !state.mic ? "active" : ""
+            }`}
+            src={state.mic ? micon : micoff}
+            onClick={handleState({ mic: !state.mic, type: "mic" })}
+          ></img>
+          <img
+            className={`Controller_control nodrag Controller_${
+              !state.video ? "active" : ""
+            }`}
+            src={state.video ? camon : camoff}
+            onClick={handleState({ video: !state.video, type: "video" })}
+          ></img>
+          {haveScreen && (
+            <img
+              className={`Controller_control nodrag Controller_${
+                !state.screen ? "active" : ""
+              }`}
+              src={state.screen ? screen : screen}
+              onClick={handleState({ screen: !state.screen, type: "screen" })}
+            ></img>
+          )}
+          <img
+            className={`Controller_control nodrag Controller_${
+              !state.chat ? "active" : ""
+            }`}
+            src={state.chat ? chaton : chatoff}
+            onClick={handleState({ chat: !state.chat, type: "chat" })}
+          ></img>
+        </div>
+      </Rnd>
+      {state.chat && <ChatBox id={id} />}
+    </>
   );
 }

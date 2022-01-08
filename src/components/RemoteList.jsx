@@ -35,7 +35,8 @@ export default connect((state) => ({
           });
         },
         onData: (data) => {
-          // console.log({ data });
+          // console.log("chat", data);
+
           dataManager(data, myid);
         },
         onStream: (stream) => {

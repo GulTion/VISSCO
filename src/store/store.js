@@ -32,6 +32,11 @@ const main = produce((state = initState, action) => {
 
     case "CONNECTION":
       state.conn[data.id] = { ...(state.conn[data.id] || {}), ...data };
+      state.chat[data.id] = [];
+      break;
+
+    case "ADD_CHAT":
+      state.chat[data.id].push({ text: data.text, my: data.my });
       break;
 
     default:

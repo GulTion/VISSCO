@@ -1,4 +1,5 @@
 import store from "../store/store";
+import dataManager from "./dataManger";
 import { emit, makePeerInstance, statusMake } from "./initators";
 import videoEventManager from "./videoEventManager";
 const handShaker = (data) => {
@@ -59,7 +60,9 @@ const handShaker = (data) => {
               videoEventManager(data.from);
             },
             onData: (data) => {
+              // console.log("chat", data);
               // console.log({ data });
+              dataManager(data, myid);
             },
           });
         }

@@ -27,6 +27,13 @@ export const requestForMicStream = async () => {
   let stream = await navigator.mediaDevices.getUserMedia({
     audio: true,
   });
+  // let stream = await navigator.mediaDevices.getUserMedia({
+  //   video: true,
+  // });
+  // document.querySelectorAll(`myscreen${id}`).forEach((e) => {
+  //   e.srcObject = stream;
+  //   e.play();
+  // });
   // document.myapi.stream.mic = stream;
 
   return stream;
@@ -40,6 +47,10 @@ export const requestForVideoStream = async () => {
   // } else {
   let stream = await navigator.mediaDevices.getUserMedia({
     video: true,
+  });
+  document.querySelectorAll("#myVideo").forEach((e) => {
+    e.srcObject = stream;
+    e.play();
   });
   // document.myapi.stream.video = stream;
 

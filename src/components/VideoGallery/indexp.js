@@ -5,7 +5,7 @@ export function recalculateLayout() {
   const gallery = document.querySelector(".VideoGallery");
   const aspectRatio = 16 / 9;
   const screenWidth = document.body.getBoundingClientRect().width;
-  const screenHeight = document.body.getBoundingClientRect().height;
+  const screenHeight = document.body.getBoundingClientRect().height - 42;
   const videoCount = document.querySelectorAll(".video").length;
 
   // or use this nice lib: https://github.com/fzembow/rect-scaler

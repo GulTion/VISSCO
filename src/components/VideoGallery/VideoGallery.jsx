@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
+import Controller from "../Controller/Controller";
 import VideoCard from "../VideoCard";
 import "./index.scss";
 import "./indexp";
@@ -14,7 +15,8 @@ export default connect((state) => ({ remotes: state.conn }))(
             .map((e, i) => {
               return <VideoView key={i} id={e.id} stream={e.stream} />;
             })}
-          <VideoCard />
+          {/* <VideoCard /> */}
+          <Controller bounds=".VideoGallery" addMyVideo={true} />
         </div>
       </>
     );
@@ -22,18 +24,18 @@ export default connect((state) => ({ remotes: state.conn }))(
 );
 
 const VideoView = ({ id }) => {
-  useEffect(() => {
-    console.log("Render", id);
-    let video = document.querySelector(`#video${id}`);
-    if (true) {
-      if (video) {
-        console.log("Stream", id);
-        // video.focus();
-        video.srcObject = document.myapi.getStream(id);
-        video.play();
-      }
-    }
-  }, []);
+  // useEffect(() => {
+  //   console.log("Render", id);
+  //   let video = document.querySelector(`#video${id}`);
+  //   if (true) {
+  //     if (video) {
+  //       console.log("Stream", id);
+  //       // video.focus();
+  //       video.srcObject = document.myapi.getStream(id);
+  //       video.play();
+  //     }
+  //   }
+  // }, []);
 
   return (
     <div className="VideoView">

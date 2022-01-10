@@ -2,24 +2,39 @@ import os
 import webview
 
 from pynput.mouse import Controller
-
-mice = Controller()
-
-
-def map(js):
-    return mapper[js]
+from pynput.keyboard import Key, Controller
+keyboard = Controller()
 
 
 class Api:
-    def handleMouse(self, data):
-        print(data)
+    def handleMouse(self, pac):
+        print(pac)
+        if(pac["data"]=="MOVE"):
+            print("move")
+        elif(pac["data"]=="CLICK"):
+            print("click")
+            if(pac["key"]=="LEFT"):
+                print("left click")
+            elif(pac["key"]=="RIGHT"):
+                print("right click")    
 
+        pass
+
+    def handleKeyboard(self, data):
+        print(data)
+<<<<<<< HEAD
+
+=======
+        if(data["key"]=="DOWN"):
+           print("DOWN")
+        elif(data["key"]=="UP"):
+           print("UP")
+           
+        pass
+>>>>>>> 3c72d5f321b8ebcb9f58dccaa40f6290f6a92821
 
 def get_entrypoint():
-    def exists(path):
-        return os.path.exists(os.path.join(os.path.dirname(__file__), path))
-
-    if exists('../gui/index.html'):  # unfrozen development
+    def exists(path):zen development
         return '../gui/index.html'
 
     if exists('../Resources/gui/index.html'):  # frozen py2app

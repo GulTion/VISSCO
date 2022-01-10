@@ -35,8 +35,15 @@ export default connect((state) => ({
           });
         },
         onData: (data) => {
-          // console.log({ data });
+          // console.log("chat", data);
+
           dataManager(data, myid);
+        },
+        onStream: (stream) => {
+          document.myapi.setStream(data.from, stream);
+
+          let vid = document.querySelector(`#video${data.from}`);
+          vid.srcObject = new MediaStream([stream.getTracks()[1]]);
         },
       });
       // emit(id, {

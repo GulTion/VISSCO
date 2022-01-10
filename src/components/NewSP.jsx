@@ -9,6 +9,7 @@ import {
 import RemoteList from "./RemoteList";
 import "./_One.scss";
 import { Input } from "./MiniOne";
+import Front from "./Front/Front";
 
 const nanoid = customAlphabet(KEY_CONFIG.string, KEY_CONFIG.length);
 
@@ -40,24 +41,27 @@ export default function NewSP() {
   }, []);
 
   return (
-    <div className="NewSp">
-      {/* <h1>{state}</h1> */}
-      <div className=" flex wrap acenter NewSp_head">
-        <Input disabled label={"Me ID : "} defaultValue={state} />
-        <Input label={"Remote ID :  "} id={"yourID"} />
+    <>
+      <div className="NewSp">
+        {/* <h1>{state}</h1> */}
+        <div className=" flex wrap acenter NewSp_head">
+          <Input disabled label={"Me ID : "} defaultValue={state} />
+          <Input label={"Remote ID :  "} id={"yourID"} />
 
-        <Input
-          value="Connect"
-          type="button"
-          label={"Click Me to"}
-          className="Button"
-          onClick={sendRequestJoin}
-        />
+          <Input
+            value="Connect"
+            type="button"
+            label={"Click Me to"}
+            className="Button"
+            onClick={sendRequestJoin}
+          />
 
-        {/* </button> */}
+          {/* </button> */}
+        </div>
+
+        <RemoteList />
       </div>
-
-      <RemoteList />
-    </div>
+      <Front />
+    </>
   );
 }

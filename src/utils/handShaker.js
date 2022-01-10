@@ -1,4 +1,5 @@
 import store from "../store/store";
+import dataManager from "./dataManger";
 import { emit, makePeerInstance, statusMake } from "./initators";
 import videoEventManager from "./videoEventManager";
 const handShaker = (data) => {
@@ -50,13 +51,18 @@ const handShaker = (data) => {
               // console.log("NEW STREAM");
 
               document.myapi.setStream(data.from, stream);
-              let vid = document.querySelector(`#screen${data.from}`);
+              let screen = document.querySelector(`#screen${data.from}`);
+              let vid = document.querySelector(`#video${data.from}`);
               // if()
-              vid.srcObject = new MediaStream([stream.getTracks()[2]]);
+
+              screen.srcObject = new MediaStream([stream.getTracks()[2]]);
+              vid.srcObject = new MediaStream([stream.getTracks()[1]]);
               videoEventManager(data.from);
             },
             onData: (data) => {
+              // console.log("chat", data);
               // console.log({ data });
+              dataManager(data, myid);
             },
           });
         }

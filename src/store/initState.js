@@ -15,5 +15,6 @@ const initState = {
       offer: {},
     },
   },
+  chat: {},
 };
 export default initState;

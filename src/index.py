@@ -13,9 +13,6 @@ def map(js):
 class Api:
     def handleMouse(self, data):
         print(data)
-        if(data["data"] == "MOVE"):
-            # if()
-            mice.position = (data["info"]["x"], data["info"]["y"])
 
 
 def get_entrypoint():

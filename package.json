@@ -25,7 +25,8 @@
     "start:default": "./venv-pywebview/bin/python src/index.py"
   },
   "repository": {
-    "type": "git",
+    "type": "git",.\\venv-pywebview\\Scripts\\python src\\index.py
+
     "url": "git+https://github.com/r0x0r/pywebview-react-boilerplate.git"
   },
   "keywords": [

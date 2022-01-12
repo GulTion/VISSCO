@@ -1,6 +1,6 @@
 import store from "../store/store";
 import dataManager from "./dataManger";
-import { emit, makePeerInstance, statusMake } from "./initators";
+import { emit, makePeerInstance } from "./initators";
 import videoEventManager from "./videoEventManager";
 const handShaker = (data) => {
   const { signalApi, id: myid, getStatus, setStatus, status } = document.myapi;
@@ -29,8 +29,6 @@ const handShaker = (data) => {
             init: false,
             offer: data.offer,
             onConnect: () => {
-              statusMake(data.from);
-
               store.dispatch({
                 type: "CONNECTION",
                 data: { id: data.from, type: "remote" },
@@ -71,12 +69,9 @@ const handShaker = (data) => {
 
       case "REQUEST_ANWSER":
         // accept normal anwser
-        const { screenConncted, micConnected, videoConnected, connected } =
-          status[Number(data.from)];
+
         // console.log(getStatus(data.from));
         // console.log(status[Number(data.from)]);
-
-        statusMake(data.from);
 
         document.myapi.getRemote(data.from).signal(data.offer);
 

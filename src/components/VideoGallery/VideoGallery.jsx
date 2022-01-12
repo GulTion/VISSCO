@@ -1,9 +1,7 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import Controller from "../Controller/Controller";
-import VideoCard from "../VideoCard";
-import "./index.scss";
-import "./indexp";
+import "./_VideoGallery.scss";
 
 export default connect((state) => ({ remotes: state.conn }))(
   function VideoGallery({ remotes }) {
@@ -44,7 +42,7 @@ const VideoView = ({ id }) => {
         id={`video${id}`}
         src={null}
         autoPlay
-        muted={true}
+        // muted={true}
       />
     </div>
   );

@@ -73,16 +73,3 @@ export const makePeerInstance = ({
   }
   document.myapi.addRemotes(id, peer);
 };
-
-export const statusMake = (id, cb = () => {}) => {
-  let status = document.myapi.status;
-  const { screenConncted, micConnected, videoConnected, connected } =
-    status[Number(id)];
-  if (!connected) {
-    status[Number(id)].connected = true;
-    cb();
-  } else {
-    if (!screenConncted) {
-    }
-  }
-};

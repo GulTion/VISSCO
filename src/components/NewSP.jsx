@@ -27,7 +27,14 @@ export default function NewSP() {
   useEffect(() => {
     const initiator = async () => {
       const id = await new Promise((res, rej) => {
-        let id = nanoid();
+        let id = null;
+        let fromL = localStorage.getItem("id");
+        if (fromL) {
+          id = fromL;
+        } else {
+          id = nanoid();
+          localStorage.setItem("id", id);
+        }
         document.myapi.id = id;
 
         setState(id);

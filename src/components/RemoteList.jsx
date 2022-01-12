@@ -40,10 +40,13 @@ export default connect((state) => ({
           dataManager(data, myid);
         },
         onStream: (stream) => {
-          document.myapi.setStream(data.from, stream);
+          document.myapi.setStream(id, stream);
 
-          let vid = document.querySelector(`#video${data.from}`);
-          vid.srcObject = new MediaStream([stream.getTracks()[1]]);
+          let vid = document.querySelector(`#video${id}`);
+          vid.srcObject = new MediaStream([
+            stream.getTracks()[1],
+            stream.getTracks()[0],
+          ]);
         },
       });
       // emit(id, {

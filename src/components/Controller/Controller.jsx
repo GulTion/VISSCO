@@ -40,6 +40,7 @@ export default function Controller({
         }
       } else if (p.type === "video") {
         if (!document.myapi.stream) {
+          console.log();
           document.myapi.remotes[id].addStream(await requestForAllStream());
           const [m, v, s] = document.myapi.stream.getTracks();
           v.enabled = true;

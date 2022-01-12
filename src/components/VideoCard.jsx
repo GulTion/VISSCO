@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import { Rnd } from "react-rnd";
-import { requestForVideoStream } from "../utils/streamHandler";
+// import { requestForVideoStream } from "../utils/streamHandler";
 import I from "../assets/I";
 export default function VideoCard({ id }) {
   const ref = useRef();

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { connect } from "react-redux";
 import Connection from "./Connection";
 import NewSP from "./NewSP";
-import { recalculateLayout } from "./VideoGallery/indexp";
+// import { recalculateLayout } from "./VideoGallery/indexp";
 import VideoGallery from "./VideoGallery/VideoGallery";
 
 // import { home } from "../assets/I";
@@ -12,19 +12,11 @@ const TabPanel = ({ children, now, i }) => {
 };
 export default connect((state) => ({ remotes: state.conn }))(
   function RemoteTab({ remotes, arr }) {
-    const [now, setNow] = useState(1);
+    const [now, setNow] = useState(0);
 
     const handleSet = (i) => {
       return () => {
         setNow(i);
-        console.log(i);
-        if (i === 999998) {
-          [null, null, null, null, null].forEach((e) => {
-            setTimeout(() => {
-              recalculateLayout();
-            }, 500);
-          });
-        }
       };
     };
 

@@ -4,8 +4,8 @@ import handShaker from "../utils/handShaker";
 export default function Socket({ id }) {
   const [conn, setConn] = useState(false);
   useEffect(() => {
-    // const socket = io("https://chitraBackend.gultion.repl.co");
-    const socket = io("http://127.0.0.1:5000/");
+    const socket = io("https://9ca3e553-c458-464d-adf5-8b5b3c4f9a71-00-1t3pn03cqnrav.janeway.replit.dev/");
+    // const socket = io("http://127.0.0.1:5000/");
     document.socket = socket;
     socket.on("connect", () => {
       document.socket.on(id, (data) => {
